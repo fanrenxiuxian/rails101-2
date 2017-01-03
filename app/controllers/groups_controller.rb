@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
+  
   def index
     @group = Group.all
   end
@@ -29,7 +31,7 @@ end
     redirect_to groups_path, notice: "Update Success"
   else
     render :edit
-  end 
+  end
   end
 
   def destroy
